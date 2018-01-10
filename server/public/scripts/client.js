@@ -8,6 +8,7 @@ function onReady(){
   $('#addButton').on('click', addKoala);
   $('#viewKoalas').on('click', '.koalaDelete', koalaDelete);
   $('#viewKoalas').on('click', '.transferReady', updateKoala);
+  $('#toggleTransfer').on('click', toggleNotReadyKoalas)
 }
 
 function getKoala(){
@@ -16,25 +17,29 @@ function getKoala(){
     url: '/koala',
     success: function(response){
       console.log('Get request response:', response);
-      $('#viewKoalas').empty();
-      for (let i = 0; i < response.length; i++) {
-      let $row = $('<tr>');
-      $row.data('id', response[i].id);
-      $row.append('<td> ' + response[i].name + '</td>');
-      $row.append('<td> ' + response[i].age + '</td>');
-      $row.append('<td> ' + response[i].gender + '</td>');
-      $row.append('<td> ' + response[i].ready_to_transfer + '</td>');
-      $row.append('<td> ' + response[i].notes + '</td>');
-      $row.append('<td><button type="button" class="btn btn-danger koalaDelete">Remove Koala</button></td>');
-      if(response[i].ready_to_transfer == 'No'){
-        $row.append('<td><button type="button" class="btn btn-primary transferReady">Ready to Transfer!</button></td>');
-      } else {
-        $row.append('<td></td>');
-      }
-      $('#viewKoalas').append($row);
-      }
+      toHTML(response);
     }
   });
+}
+
+function toHTML(response) {
+  $('#viewKoalas').empty();
+  for (let i = 0; i < response.length; i++) {
+    let $row = $('<tr>');
+    $row.data('id', response[i].id);
+    $row.append('<td> ' + response[i].name + '</td>');
+    $row.append('<td> ' + response[i].age + '</td>');
+    $row.append('<td> ' + response[i].gender + '</td>');
+    $row.append('<td> ' + response[i].ready_to_transfer + '</td>');
+    $row.append('<td> ' + response[i].notes + '</td>');
+    $row.append('<td><button type="button" class="btn btn-danger koalaDelete">Remove Koala</button></td>');
+    if(response[i].ready_to_transfer == 'No'){
+      $row.append('<td><button type="button" class="btn btn-primary transferReady">Ready to Transfer!</button></td>');
+    } else {
+      $row.append('<td></td>');
+    }
+    $('#viewKoalas').append($row);
+    }
 }
 
 function addKoala(){
@@ -96,3 +101,22 @@ function updateKoala(){
     });
 }
 
+function toggleNotReadyKoalas() {
+  let toggled = true;
+  if (toggled) {
+    $.ajax({
+      method: 'GET',
+      url: '/koala/notReady',
+      success: function(response){
+        console.log('notready');
+        toHTML(response);
+        toggled = false;
+      }
+    });
+    
+  } else {
+    console.log('ready');
+    getKoala();
+    toggled = true;
+  }
+}
