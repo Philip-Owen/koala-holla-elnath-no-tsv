@@ -67,7 +67,7 @@ function koalaDelete() {
   let koalaId = $(this).parents('tr').data('id');
   $.ajax({
       method: 'DELETE',
-      url: '/koalas/' + koalaId,
+      url: '/koala/' + koalaId,
       success: function(response){
           console.log('koala deleted:', response);
       }
@@ -80,7 +80,7 @@ function updateKoala(){
   let tranferReady = 'Yes';
     $.ajax({
         method: 'PUT',
-        url: '/koalas/' + koalaId,
+        url: '/koala/' + koalaId,
         data: {ready_to_tranfer: tranferReady},
         success: function(response){
             console.log('response:', response);
