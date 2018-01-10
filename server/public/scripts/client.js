@@ -7,6 +7,7 @@ function onReady(){
   getKoala();
   $('#addButton').on('click', addKoala);
   $('#viewKoalas').on('click', '.koalaDelete', koalaDelete);
+  $('#viewKoalas').on('click', '.tranferReady', updateKoala);
 }
 
 function getKoala(){
@@ -24,6 +25,9 @@ function getKoala(){
       $row.append('<td> ' + response[i].ready_to_transfer + '</td>');
       $row.append('<td> ' + response[i].notes + '</td>');
       $row.append('<button type="button" class="koalaDelete">Remove Koala</button>');
+      if(response[i].ready_to_transfer == 'No'){
+        $row.append('<button type="button" class="tranferReady">Ready to Transfer!</button>');
+      }
       $row.data('id', response[i].id);
       $('#viewKoalas').append($row);
       }
@@ -60,6 +64,27 @@ function resetInput(){
 }
 
 function koalaDelete() {
-  console.log($(this).parents('tr').data('id'));
+  let koalaId = $(this).parents('tr').data('id');
+  $.ajax({
+      method: 'DELETE',
+      url: '/koalas/' + koalaId,
+      success: function(response){
+          console.log('koala deleted:', response);
+      }
+  });
+}
+
+
+function updateKoala(){
+  let koalaId = $(this).parents('tr').data('id');
+  let tranferReady = 'Yes';
+    $.ajax({
+        method: 'PUT',
+        url: '/koalas/' + koalaId,
+        data: {ready_to_tranfer: tranferReady},
+        success: function(response){
+            console.log('response:', response);
+        }
+    });
 }
 
