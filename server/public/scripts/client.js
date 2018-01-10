@@ -39,7 +39,7 @@ function addKoala(){
   $.ajax({
     method: 'POST',
     url: '/koala',
-    method: newKoala,
+    data: newKoala,
     success: function(response){
       console.log('Post request response:', response);
       // getKoala();
