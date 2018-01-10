@@ -36,22 +36,22 @@ function addKoala(){
     ready_to_transfer: $('#ready_to_transfer').val(),
     notes: $('#notesIn').val()
   }
+  console.log(newKoala);
+  
   $.ajax({
     method: 'POST',
     url: '/koala',
     data: newKoala,
     success: function(response){
       console.log('Post request response:', response);
-      // getKoala();
-      // resetInput();
+      getKoala();
+      resetInput();
     }
-  })
+  });
 }
 
 function resetInput(){
   $('#nameIn').val('');
   $('#ageIn').val('');
-  $('#gender').val();
-  $('#ready_to_transfer').val();
   $('#notesIn').val('');
 }
