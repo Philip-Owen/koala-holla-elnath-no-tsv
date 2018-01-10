@@ -6,6 +6,7 @@ function onReady(){
   console.log('JQ');
   getKoala();
   $('#addButton').on('click', addKoala);
+  $('#viewKoalas').on('click', '.koalaDelete', koalaDelete);
 }
 
 function getKoala(){
@@ -22,6 +23,8 @@ function getKoala(){
       $row.append('<td> ' + response[i].gender + '</td>');
       $row.append('<td> ' + response[i].ready_to_transfer + '</td>');
       $row.append('<td> ' + response[i].notes + '</td>');
+      $row.append('<button type="button" class="koalaDelete">Remove Koala</button>');
+      $row.data('id', response[i].id);
       $('#viewKoalas').append($row);
       }
     }
@@ -36,22 +39,27 @@ function addKoala(){
     ready_to_transfer: $('#ready_to_transfer').val(),
     notes: $('#notesIn').val()
   }
+  console.log(newKoala);
+  
   $.ajax({
     method: 'POST',
     url: '/koala',
-    method: newKoala,
+    data: newKoala,
     success: function(response){
       console.log('Post request response:', response);
-      // getKoala();
-      // resetInput();
+      getKoala();
+      resetInput();
     }
-  })
+  });
 }
 
 function resetInput(){
   $('#nameIn').val('');
   $('#ageIn').val('');
-  $('#gender').val();
-  $('#ready_to_transfer').val();
   $('#notesIn').val('');
 }
+
+function koalaDelete() {
+  console.log($(this).parents('tr').data('id'));
+}
+
