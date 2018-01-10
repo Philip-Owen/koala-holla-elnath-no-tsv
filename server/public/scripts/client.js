@@ -13,8 +13,17 @@ function getKoala(){
     method: 'GET',
     url: '/koala',
     success: function(response){
-      console.log('get request response', response);
-      
+      console.log('Get request response:', response);
+      $('#viewKoalas').empty();
+      for (let i = 0; i < response.length; i++) {
+      let $row = $('<tr>');
+      $row.append('<td> ' + response[i].name + '</td>');
+      $row.append('<td> ' + response[i].age + '</td>');
+      $row.append('<td> ' + response[i].gender + '</td>');
+      $row.append('<td> ' + response[i].ready_to_transfer + '</td>');
+      $row.append('<td> ' + response[i].notes + '</td>');
+      $('#viewKoalas').append($row);
+      }
     }
   });
 }
@@ -32,6 +41,7 @@ function addKoala(){
     url: '/koala',
     method: newKoala,
     success: function(response){
+      console.log('Post request response:', response);
       getKoala();
       resetInput();
     }

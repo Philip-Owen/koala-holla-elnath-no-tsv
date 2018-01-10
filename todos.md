@@ -11,5 +11,5 @@
         - [x] insert current koala data
 ##CLIENT
 - [ ] ajax get/post
-- [ ] change gender field to selector
+- [x] change gender field to selector
 - [ ] display Koalas on the DOM
