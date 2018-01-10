@@ -9,12 +9,12 @@ router.get('/', (req, res) =>{
         .then((result) => {
             // console.log('query results: ', result);            
             res.send(result.rows);
-        })
+        })//end then result
         .catch((err) => {
             // console.log('error making select query:', err);
             res.sendStatus(500);
         });
-});
+});//end router get 
 
 router.post('/', (req, res) => {
     console.log('req.body: ', req.body);
@@ -23,11 +23,35 @@ router.post('/', (req, res) => {
         .then((result) => {
             console.log('query results: ', result);
             res.sendStatus(201);
-        })
+        }) 
         .catch((err) => {
             // console.log('error making insert query:', err);
             res.sendStatus(500);
-        });
-});
+        }); 
+});//end router post 
+router.put('/', (req, res) => {
+    const queryText = 'UPDATE koala SET ready_to_update = yes WHERE id = $1'
+    pool.query(queryText, [req.body.ready_to_transfer, req.params.ready_to_transfer])
+        .then((result) => {
+        console.log('query results: ', result);
+        res.sendStatus(201);
+    })
+    .catch((err) => {
+        // console.log('error making insert query:', err);
+        res.sendStatus(500);
+    });
+})//end update to database 
+router.delete('/', (req, res) => {
+    const queryText = 'DELETE koala WHERE id= $1'
+    pool.query(queryText, [req.params.id])
+        .then((result) => {
+         console.log('query results: ', result);
+        res.sendStatus(201);
+    })
+    .catch((err) => {
+        // console.log('error making insert query:', err);
+        res.sendStatus(500);
+    });
+})//end delete in database 
 
 module.exports = router;
