@@ -5,45 +5,76 @@
     <title>Koalla Holla</title>
     <script src="vendors/jquery-3.0.0.min.js" charset="utf-8"></script>
     <script src="scripts/client.js" charset="utf-8"></script>
-    <!-- <link rel="stylesheet" href="views/styles.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/styles.css">
   </head>
   <body>
-    <img src="images/icon.png" />
-    <h1>Koala Holla</h1>
-    <h2>1976 Llama Comma Drive</h2>
-    <h2>Walla Walla, WA</h2>
-    <div id="addKoala">
-      <h2>Add Koala</h2>
-      <input type="text" id="nameIn" value="" placeholder="Name">
-      <input type="text" id="ageIn" value="" placeholder="Age">
-      <select id="gender">
-        <option value="M">Male</option>
-        <option value="F">Female</option>
-      </select>
-      <select id="ready_to_transfer">
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-      </select>
-      <input type="text" id="notesIn" value="" placeholder="Notes">
-      <button type="button" id="addButton">Add Koala</button>
+    <div class="container-fluid">
+      <div id="banner">
+          <div class="row">
+              <div class="col-xs-11 col-sm-4 col-md-5 col-lg-offset-1 col-lg-6 spacing">
+                <div id="koalaBanner">
+                    <img src="images/icon.png" />
+                    <h1>Koala Holla</h1>
+                    <h2>1976 Llama Comma Drive</h2>
+                    <h2>Walla Walla, WA</h2>
+                </div>
+              </div>
+            </div>
+      </div>
+
+            <div class="col-xs-7 col-sm-3 col-lg-4">
+        </div>
+        <div class="row">
+          <div class="col-xs-11 col-sm-12 col-md-offset-1 col-md-10 col-lg-offset-0 col-lg-12 text-center">
+            <div id="addKoala">
+              <div class="form-group">
+                  <h2>Add Koala</h2>
+                  <input type="text" id="nameIn" value="" placeholder="Name">
+                  <input type="text" id="ageIn" value="" placeholder="Age">
+                  <select id="gender">
+                      <option>Gender</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                  </select>
+                  <select id="ready_to_transfer">
+                      <option>Ready For Transfer</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                  <input type="text" id="notesIn" value="" placeholder="Notes">
+                  <button type="button" id="addButton">Add Koala</button>
+              </div>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-11 col-sm-12 col-md-offset-1 col-md-10 col-lg-offset-0 col-lg-12">
+                <div>
+                    <h2 id="allKoalas">All Koalas</h2>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Age</th>
+                          <th>Gender</th>
+                          <th>Ready for Transfer</th>
+                          <th>Notes</th>
+                          <th>Delete</th>
+                          <th>Transfer Koala</th>
+                        </tr>
+                      </thead>
+                      <tbody id="viewKoalas">
+                      </tbody>
+                    </table>
+                  </div>
+            </div>
+        </div>
     </div>
-    <div>
-      <h2>All Koalas</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Gender</th>
-            <th>Ready for Transfer</th>
-            <th>Notes</th>
-            <th>Delete</th>
-            <th>Transfer Koala</th>
-          </tr>
-        </thead>
-        <tbody id="viewKoalas">
-        </tbody>
-      </table>
-    </div>
+    <footer>
+
+    </footer>
+
+
   </body>
 </html>

@@ -19,16 +19,18 @@ function getKoala(){
       $('#viewKoalas').empty();
       for (let i = 0; i < response.length; i++) {
       let $row = $('<tr>');
+      $row.data('id', response[i].id);
       $row.append('<td> ' + response[i].name + '</td>');
       $row.append('<td> ' + response[i].age + '</td>');
       $row.append('<td> ' + response[i].gender + '</td>');
       $row.append('<td> ' + response[i].ready_to_transfer + '</td>');
       $row.append('<td> ' + response[i].notes + '</td>');
-      $row.append('<button type="button" class="koalaDelete">Remove Koala</button>');
+      $row.append('<td><button type="button" class="btn btn-danger koalaDelete">Remove Koala</button></td>');
       if(response[i].ready_to_transfer == 'No'){
-        $row.append('<button type="button" class="transferReady">Ready to Transfer!</button>');
+        $row.append('<td><button type="button" class="btn btn-primary transferReady">Ready to Transfer!</button></td>');
+      } else {
+        $row.append('<td></td>');
       }
-      $row.data('id', response[i].id);
       $('#viewKoalas').append($row);
       }
     }
@@ -61,6 +63,9 @@ function resetInput(){
   $('#nameIn').val('');
   $('#ageIn').val('');
   $('#notesIn').val('');
+  $('#ready_to_transfer').val('Ready For Transfer');
+  $('#gender').val('Gender');
+
 }
 
 function koalaDelete() {
@@ -70,6 +75,7 @@ function koalaDelete() {
       url: '/koala/' + koalaId,
       success: function(response){
           console.log('koala deleted:', response);
+          getKoala();
       }
   });
 }

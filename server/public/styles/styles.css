@@ -1,0 +1,47 @@
+table {
+    border-collapse: collapse;
+    width: 85%;
+    margin: 0 auto;
+    font-size: 17px;
+  }
+  
+  th {
+    border-bottom: 1px solid rgb(0, 89, 255);
+  }
+  
+  th, td {
+      padding: 10px;
+      text-align: left;
+  }
+}
+
+input[type=text] {
+    border: none;
+    border-bottom: 2px solid red;
+}
+
+#allKoalas {
+    margin-left: 9%;
+}
+
+#koalaBanner {
+    display: inline;
+}
+
+img {
+    float: left;
+    width:25%;
+    height: auto;
+}
+
+.spacing {
+    margin-top: 50px;
+    
+}
+
+#banner {
+    background: #667db6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding-bottom: 25px;
+}

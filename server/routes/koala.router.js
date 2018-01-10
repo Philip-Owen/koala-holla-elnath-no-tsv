@@ -4,7 +4,7 @@ const pool = require('../modules/pool');
 
 
 router.get('/', (req, res) =>{
-    const queryText = 'SELECT * FROM koala';
+    const queryText = 'SELECT * FROM koala ORDER BY "id"';
     pool.query(queryText)
         .then((result) => {
             // console.log('query results: ', result);            
@@ -46,14 +46,14 @@ router.put('/:id', (req, res) => {
 
 
 router.delete('/:id', (req, res) => {
-    const queryText = 'DELETE koala WHERE "id"= $1'
+    const queryText = 'DELETE FROM koala WHERE "id"= $1'
     pool.query(queryText, [req.params.id])
         .then((result) => {
          console.log('query results: ', result);
         res.sendStatus(201);
     })
     .catch((err) => {
-        // console.log('error making insert query:', err);
+        console.log('error making insert query:', err);
         res.sendStatus(500);
     });
 })//end delete in database 
