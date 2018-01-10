@@ -29,20 +29,24 @@ router.post('/', (req, res) => {
             res.sendStatus(500);
         }); 
 });//end router post 
-router.put('/', (req, res) => {
-    const queryText = 'UPDATE koala SET ready_to_update = yes WHERE id = $1'
-    pool.query(queryText, [req.body.ready_to_transfer, req.params.ready_to_transfer])
+
+
+router.put('/:id', (req, res) => {
+    const queryText = 'UPDATE koala SET "ready_to_transfer" = $1 WHERE "id" = $2';
+    pool.query(queryText, [req.body.ready_to_transfer, req.params.id])
         .then((result) => {
         console.log('query results: ', result);
         res.sendStatus(201);
     })
     .catch((err) => {
-        // console.log('error making insert query:', err);
+        console.log('error making insert query:', err);
         res.sendStatus(500);
     });
 })//end update to database 
-router.delete('/', (req, res) => {
-    const queryText = 'DELETE koala WHERE id= $1'
+
+
+router.delete('/:id', (req, res) => {
+    const queryText = 'DELETE koala WHERE "id"= $1'
     pool.query(queryText, [req.params.id])
         .then((result) => {
          console.log('query results: ', result);
