@@ -1,6 +1,6 @@
 console.log( 'js' );
 
-$( document ).ready(onReady());
+$( document ).ready(onReady);
 
 function onReady(){
   console.log('JQ');
@@ -42,8 +42,8 @@ function addKoala(){
     method: newKoala,
     success: function(response){
       console.log('Post request response:', response);
-      getKoala();
-      resetInput();
+      // getKoala();
+      // resetInput();
     }
   })
 }
@@ -51,7 +51,7 @@ function addKoala(){
 function resetInput(){
   $('#nameIn').val('');
   $('#ageIn').val('');
-  $('#gender').val('');
-  $('#ready_to_transfer').val('');
+  $('#gender').val();
+  $('#ready_to_transfer').val();
   $('#notesIn').val('');
 }
