@@ -1,3 +1,7 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
 table {
     border-collapse: collapse;
     width: 85%;
@@ -15,7 +19,7 @@ table {
   }
 }
 
-input[type=text] {
+#addKoala, input {
     border: none;
     border-bottom: 2px solid red;
 }
