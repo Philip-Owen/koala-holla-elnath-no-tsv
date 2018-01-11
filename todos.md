@@ -16,10 +16,17 @@
 
 #Hard Mode
 ## SERVER
-- [ ] UPDATE request to change ready_to_transer from N to Y
-- [ ] DELETE request to remove koalas from DB.
+- [X] UPDATE request to change ready_to_transer from N to Y
+- [X] DELETE request to remove koalas from DB.
 
 ##CLIENT
-- [ ] ajax PUT/DELETE
-- [ ] add button for transfer and for delete
-- [ ] add boostrap/styling
+- [X] ajax PUT/DELETE
+- [X] add button for transfer and for delete
+- [X] add boostrap/styling
+
+#Pro Mode
+## SERVER
+- [X] add get route to get koalas not ready for transfer
+
+## CLIENT
+- [X] add ajax get to toggle koalas ready for transfer

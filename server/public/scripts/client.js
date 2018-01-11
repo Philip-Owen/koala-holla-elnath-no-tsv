@@ -11,6 +11,8 @@ function onReady(){
   $('#toggleTransfer').on('click', toggleNotReadyKoalas)
 }
 
+let toggled = true;
+
 function getKoala(){
   $.ajax({
     method: 'GET',
@@ -102,7 +104,6 @@ function updateKoala(){
 }
 
 function toggleNotReadyKoalas() {
-  let toggled = true;
   if (toggled) {
     $.ajax({
       method: 'GET',
@@ -113,7 +114,6 @@ function toggleNotReadyKoalas() {
         toggled = false;
       }
     });
-    
   } else {
     console.log('ready');
     getKoala();
