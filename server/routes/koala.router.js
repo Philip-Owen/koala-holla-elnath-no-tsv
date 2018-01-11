@@ -1,7 +1,14 @@
+// *********************************************************
+//                      Dependencies 
+// *********************************************************
+
 const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
 
+// *********************************************************
+//                      Routes 
+// *********************************************************
 // *******GET routes*******
 router.get('/', (req, res) =>{
     const queryText = 'SELECT * FROM koala ORDER BY "id"';
