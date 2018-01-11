@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
 
-
+// *******GET routes*******
 router.get('/', (req, res) =>{
     const queryText = 'SELECT * FROM koala ORDER BY "id"';
     pool.query(queryText)
@@ -16,6 +16,20 @@ router.get('/', (req, res) =>{
         });
 });//end router get 
 
+router.get('/ready', (req, res) =>{
+    const queryText = 'SELECT * FROM koala WHERE "ready_to_transfer" = ' + "'Yes'";
+    pool.query(queryText)
+        .then((result) => {
+            console.log('query results: ', result);            
+            res.send(result.rows);
+        })//end then result
+        .catch((err) => {
+            console.log('error making select query:', err);
+            res.sendStatus(500);
+        });
+});//end router get 
+
+// *******POST Routes*******
 router.post('/', (req, res) => {
     console.log('req.body: ', req.body);
     const queryText = 'INSERT INTO koala("name", "gender", "age", "ready_to_transfer", "notes") VALUES($1, $2, $3, $4, $5)';
@@ -58,17 +72,5 @@ router.delete('/:id', (req, res) => {
     });
 })//end delete in database 
 
-router.get('/ready', (req, res) =>{
-    const queryText = 'SELECT * FROM koala WHERE "ready_to_transfer" = ' + "'Yes'";
-    pool.query(queryText)
-        .then((result) => {
-            console.log('query results: ', result);            
-            res.send(result.rows);
-        })//end then result
-        .catch((err) => {
-            console.log('error making select query:', err);
-            res.sendStatus(500);
-        });
-});//end router get 
 
 module.exports = router;

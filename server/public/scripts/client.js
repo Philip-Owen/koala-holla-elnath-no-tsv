@@ -2,6 +2,11 @@ console.log( 'js' );
 
 $( document ).ready(onReady);
 
+// *********************************************************
+//                      Event Listeners 
+// *********************************************************
+
+// begin onReady()
 function onReady(){
   console.log('JQ');
   getKoala();
@@ -9,10 +14,20 @@ function onReady(){
   $('#viewKoalas').on('click', '.koalaDelete', koalaDelete);
   $('#viewKoalas').on('click', '.transferReady', updateKoala);
   $('#toggleTransfer').on('click', toggleReadyKoalas)
-}
+} // end onReady()
+
+// *********************************************************
+//                       Variables 
+// *********************************************************
 
 let toggled = true;
 
+// *********************************************************
+//                      Functions 
+// *********************************************************
+
+
+// begin getKoala()
 function getKoala(){
   $.ajax({
     method: 'GET',
@@ -22,8 +37,10 @@ function getKoala(){
       toHTML(response);
     }
   });
-}
+} // end getKoala()
 
+
+// begin toHTML()
 function toHTML(response) {
   $('#viewKoalas').empty();
   for (let i = 0; i < response.length; i++) {
@@ -42,8 +59,10 @@ function toHTML(response) {
     }
     $('#viewKoalas').append($row);
     }
-}
+} // end toHTML()
 
+
+// begin addKoala()
 function addKoala(){
   let newKoala = {
     name: $('#nameIn').val(),
@@ -64,17 +83,20 @@ function addKoala(){
       resetInput();
     }
   });
-}
+} // end addKoala()
 
+
+// begin resetInput()
 function resetInput(){
   $('#nameIn').val('');
   $('#ageIn').val('');
   $('#notesIn').val('');
   $('#ready_to_transfer').val('Ready For Transfer');
   $('#gender').val('Gender');
+} // begin resetInput()
 
-}
 
+// koalaDelete()
 function koalaDelete() {
   let koalaId = $(this).parents('tr').data('id');
   $.ajax({
@@ -85,9 +107,10 @@ function koalaDelete() {
           getKoala();
       }
   });
-}
+} // end koalaDelete()
 
 
+// updateKoala()
 function updateKoala(){
   let koalaId = $(this).parents('tr').data('id');
   let transferReady = 'Yes';
@@ -101,8 +124,10 @@ function updateKoala(){
 
         }
     });
-}
+} // end updateKoala()
 
+
+// begin toggleReadyKoalas()
 function toggleReadyKoalas() {
   if (toggled) {
     $.ajax({
@@ -119,4 +144,4 @@ function toggleReadyKoalas() {
     getKoala();
     toggled = true;
   }
-}
+} // end toggleReadyKoalas()
