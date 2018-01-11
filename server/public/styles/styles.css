@@ -2,6 +2,24 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+input[type=text] {
+    border: none;
+    border-bottom: 2px solid red;
+    margin-left: 10px;
+}
+
+input[type=text]:focus {
+    outline: none;
+}
+
+select {
+    margin-left: 10px;
+}
+
+#allKoalas {
+    margin-left: 9%;
+}
+
 table {
     border-collapse: collapse;
     width: 85%;
@@ -17,15 +35,6 @@ table {
       padding: 10px;
       text-align: left;
   }
-}
-
-#addKoala, input {
-    border: none;
-    border-bottom: 2px solid red;
-}
-
-#allKoalas {
-    margin-left: 9%;
 }
 
 #koalaBanner {
@@ -49,4 +58,5 @@ img {
     background: -webkit-linear-gradient(to left, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to left, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     padding-bottom: 25px;
+    color: white;
 }

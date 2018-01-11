@@ -6,8 +6,6 @@ CREATE TABLE koala (
 "age" INT, 
 "ready_to_transfer" VARCHAR(3),
 "notes" VARCHAR (255)
-
-
 );
 
 INSERT INTO koala (name, gender, age, ready_to_transfer, notes) 
@@ -20,7 +18,7 @@ INSERT INTO koala (name, gender, age, ready_to_transfer, notes)
 VALUES ( 'Ororo', 'F', 7, 'No', 'Loves listening to Paula (Abdul)');
 
 INSERT INTO koala (name, gender, age, ready_to_transfer, notes) 
-VALUES ( 'Logan', 'M', 15, 'No', 'Loves to sauna');
+VALUES ( 'Logan', 'M', 15, 'No', 'Loves the sauna');
 
 INSERT INTO koala (name, gender, age, ready_to_transfer, notes) 
 VALUES ( 'Charlie', 'M', 9, 'Yes', 'Favorite band is Nirvana');
