@@ -58,8 +58,8 @@ router.delete('/:id', (req, res) => {
     });
 })//end delete in database 
 
-router.get('/notReady', (req, res) =>{
-    const queryText = 'SELECT * FROM koala WHERE "ready_to_transfer" = ' + "'No'";
+router.get('/ready', (req, res) =>{
+    const queryText = 'SELECT * FROM koala WHERE "ready_to_transfer" = ' + "'Yes'";
     pool.query(queryText)
         .then((result) => {
             console.log('query results: ', result);            

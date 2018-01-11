@@ -26,7 +26,7 @@
 
 #Pro Mode
 ## SERVER
-- [X] add get route to get koalas not ready for transfer
+- [X] add get route to get koalas ready for transfer
 
 ## CLIENT
 - [X] add ajax get to toggle koalas ready for transfer

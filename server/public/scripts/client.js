@@ -8,7 +8,7 @@ function onReady(){
   $('#addButton').on('click', addKoala);
   $('#viewKoalas').on('click', '.koalaDelete', koalaDelete);
   $('#viewKoalas').on('click', '.transferReady', updateKoala);
-  $('#toggleTransfer').on('click', toggleNotReadyKoalas)
+  $('#toggleTransfer').on('click', toggleReadyKoalas)
 }
 
 let toggled = true;
@@ -103,11 +103,11 @@ function updateKoala(){
     });
 }
 
-function toggleNotReadyKoalas() {
+function toggleReadyKoalas() {
   if (toggled) {
     $.ajax({
       method: 'GET',
-      url: '/koala/notReady',
+      url: '/koala/ready',
       success: function(response){
         console.log('notready');
         toHTML(response);
