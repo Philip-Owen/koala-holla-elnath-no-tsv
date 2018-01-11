@@ -44,7 +44,7 @@ router.post('/', (req, res) => {
         }); 
 });//end router post 
 
-
+// *******PUT routes*******
 router.put('/:id', (req, res) => {
     const queryText = 'UPDATE koala SET "ready_to_transfer" = $1 WHERE "id" = $2';
     pool.query(queryText, [req.body.ready_to_transfer, req.params.id])
@@ -58,7 +58,7 @@ router.put('/:id', (req, res) => {
     });
 })//end update to database 
 
-
+// *******DELETE routes*******
 router.delete('/:id', (req, res) => {
     const queryText = 'DELETE FROM koala WHERE "id"= $1'
     pool.query(queryText, [req.params.id])
